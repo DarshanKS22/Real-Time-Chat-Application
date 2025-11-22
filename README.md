@@ -1,34 +1,18 @@
 # Real-Time Chat Application
 
 A simple real-time chat application built with **Spring Boot** (WebSocket + STOMP + SockJS) backend and a lightweight **Thymeleaf + Bootstrap** frontend.
-
-**Tech**: Java, Spring Boot, Spring WebSocket (STOMP), SockJS, Thymeleaf, Bootstrap, Maven, (optional) MySQL, Docker
-
----
-
-## Badges
-![build](https://img.shields.io/badge/build-maven-blue)
-![license](https://img.shields.io/badge/license-MIT-green)
-![java](https://img.shields.io/badge/java-17%2B-orange)
+This project demonstrates how to send and receive live chat messages between multiple clients using Spring's WebSocket support.
+**Tech**: Java, Spring Boot, Spring WebSocket (STOMP), SockJS, Thymeleaf, Bootstrap, Maven.
 
 ---
 
-## Table of contents
+## 🚀 Features
 
-- [Demo](#demo)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Quick Start](#quick-start)
-- [Configuration](#configuration)
-- [Important Code Samples](#important-code-samples)
-- [Docker](#docker)
-- [Run Tests](#run-tests)
-- [Git / Repo Steps](#git--repo-steps)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- Real-time messaging using STOMP over WebSocket  
+- Simple and clean user interface  
+- Join & send chat messages instantly  
+- Lightweight frontend using Bootstrap & Thymeleaf  
+- Easy to run and extend
 
 ---
 
@@ -37,23 +21,15 @@ Open `http://localhost:8080/` after running the application.
 
 ---
 
-## Features
+## 🛠️ Technologies Used
 
-- Real-time broadcast messages using STOMP over WebSocket
-- Join/leave notifications
-- Simple, responsive UI with Bootstrap
-
----
-
-## Tech Stack
-
-- Java 17+
-- Spring Boot 2.7.x / 3.x
-- Spring WebSocket (STOMP)
-- SockJS
-- Thymeleaf
-- Bootstrap 5
-- Maven 
+- **Java 17+**
+- **Spring Boot**
+- **Spring WebSocket (STOMP)**
+- **SockJS**
+- **Thymeleaf**
+- **Bootstrap 5**
+- **Maven**
 
 ---
 
