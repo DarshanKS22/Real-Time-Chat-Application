@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg-1: #0f172a;    /* deep navy */
+  --bg-2: #07113a;    /* indigo */
+  --glass: rgba(255,255,255,0.06);
+  --glass-2: rgba(255,255,255,0.04);
+  --accent: #7c5cff;
+  --accent-2: #00d4ff;
+  --muted: rgba(255,255,255,0.7);
+  --card-radius: 16px;
+}
+
+/* animated gradient background */
+html,body{
+  height:100%;
+  margin:0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(120deg,var(--bg-1) 0%, var(--bg-2) 100%);
+  overflow-y:auto;
+}
+
+body::before{
+  content: "";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background: radial-gradient(800px 400px at 10% 20%, rgba(124,92,255,0.18), transparent 10%),
+              radial-gradient(700px 350px at 85% 80%, rgba(0,212,255,0.12), transparent 12%);
+  animation: bgFloat 12s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes bgFloat{
+  0%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-20px) scale(1.02)}
+  100%{transform:translateY(0) scale(1)}
+}
+
+.container{
+  max-width:760px;
+  margin:48px auto;
+  padding:28px;
+  border-radius: var(--card-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px) saturate(120%);
+  color: #e6eef8;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.text-center{
+  margin-bottom:18px;
+  letter-spacing:0.2px;
+}
+
+h1{
+  font-weight:700;
+  font-size:22px;
+  margin:0 0 6px 0;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(4,8,24,0.6);
+}
+
+/* Chat box */
+#chat{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0));
+  border-radius:12px;
+  padding:14px;
+  height:300px;
+  overflow-y:auto;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* message bubble defaults: note - your JS currently adds bootstrap classes; we style those too */
+.message, .border-bottom.mb-1{
+  display:inline-block;
+  max-width:84%;
+  padding:10px 14px;
+  margin-bottom:8px;
+  border-radius:12px;
+  line-height:1.2;
+  box-shadow: 0 6px 14px rgba(2,6,23,0.45);
+  opacity:0;
+  transform: translateY(8px) scale(0.995);
+  animation: popIn 260ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+/* incoming messages (others) */
+.message.incoming, .border-bottom.mb-1.incoming{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  color: var(--muted);
+  border-top-left-radius:4px;
+  margin-right:auto;
+}
+
+/* outgoing messages (you) */
+.message.outgoing{
+  background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(0,212,255,0.08));
+  color: #fff;
+  align-self:flex-end;
+  margin-left:auto;
+  border-bottom-right-radius:4px;
+}
+
+@keyframes popIn{
+  to{opacity:1; transform: translateY(0) scale(1)}
+}
+
+/* Small sender label above message */
+.sender-label{
+  display:block;
+  font-size:11px;
+  opacity:0.8;
+  margin-bottom:6px;
+  color: rgba(230,238,248,0.8);
+}
+
+/* Inputs */
+.input-group{
+  gap:8px;
+}
+
+input[type="text"], .form-control{
+  border-radius:12px;
+  padding:12px 14px;
+  border:1px solid rgba(255,255,255,0.04) !important;
+  background: rgba(255,255,255,0.02);
+  color: #eaf5ff;
+  outline: none;
+  transition: box-shadow .18s ease, transform .12s ease;
+}
+
+input[type="text"]::placeholder{ color: rgba(230,238,248,0.5); }
+
+input[type="text"]:focus, .form-control:focus{
+  box-shadow: 0 6px 18px rgba(124,92,255,0.12);
+  transform: translateY(-1px);
+  border-color: rgba(124,92,255,0.28) !important;
+}
+
+#sendMessage{
+  border-radius:12px;
+  padding:10px 18px;
+  font-weight:600;
+  letter-spacing:0.2px;
+  border: none;
+  cursor:pointer;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 8px 22px rgba(124,92,255,0.12);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+#sendMessage:disabled{ opacity:0.5; cursor:not-allowed; transform:none }
+
+#sendMessage:hover:not(:disabled){ transform: translateY(-3px); box-shadow: 0 14px 36px rgba(124,92,255,0.14);} 
+
+/* subtle floating animation for send button */
+@keyframes floatBtn{ 0%{transform:translateY(0)}50%{transform:translateY(-3px)}100%{transform:translateY(0)} }
+#sendMessage{ animation: floatBtn 6s ease-in-out infinite; }
+
+/* scrollbar styling */
+#chat::-webkit-scrollbar{ width:8px }
+#chat::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.04); border-radius:12px }
+
+/* Responsive tweaks */
+@media (max-width:600px){
+  .container{ margin:20px; padding:18px }
+  #chat{ height: 56vh }
+}
+
+
+#chat.empty{ display:flex; align-items:center; justify-content:center; color:rgba(230,238,248,0.5); font-style:italic }
+
+
+.small-note{ display:block; text-align:center; margin-top:12px; font-size:12px; color:rgba(230,238,248,0.55) }
